@@ -1,27 +1,28 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 import Regpage from "./components/Register/Regpage";
 import LoginPage from "./components/Loginpage";
 import HomePage from "./components/Homepage";
 import MLADashboard from "./components/MLADASHBOARD";
-import Developments from "./components/Developments";
+import MlaDetails from "./components/MlaDeatils"; // ✅ Updated
 import Feedback from "./components/Feedback";
+import Report from "./components/Report";
 import Navbar from "./components/navbar";
-import Report from "./components/Report"; // ✅ import here
 
 function App() {
   return (
     <Router>
       <Routes>
-        {/* Register Page */}
+        {/* 🏠 Register Page */}
         <Route path="/" element={<Regpage />} />
 
-        {/* Login Page */}
+        {/* 🔑 Login Page */}
         <Route path="/login" element={<LoginPage />} />
 
-        {/* Home */}
+        {/* 🏡 Home Page */}
         <Route
-          path="/home/*"
+          path="/home"
           element={
             <>
               <Navbar />
@@ -30,7 +31,7 @@ function App() {
           }
         />
 
-        {/* MLA Dashboard */}
+        {/* 🧑‍💼 MLA Dashboard */}
         <Route
           path="/mla"
           element={
@@ -41,18 +42,18 @@ function App() {
           }
         />
 
-        {/* Developments */}
+        {/* 🧾 MLA Details (Dynamic Route) */}
         <Route
-          path="/developments/:mlaName"
+          path="/mla/:id"
           element={
             <>
               <Navbar />
-              <Developments />
+              <MlaDetails />
             </>
           }
         />
 
-        {/* Feedback */}
+        {/* 💬 Feedback Page */}
         <Route
           path="/feedback"
           element={
@@ -63,7 +64,7 @@ function App() {
           }
         />
 
-        {/* ✅ Report Page */}
+        {/* 📊 Report Page */}
         <Route
           path="/report"
           element={

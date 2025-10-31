@@ -12,7 +12,7 @@ app.use(express.json());
 const dbPath = path.join(__dirname, "mlaDetails.db");
 let db;
 
-// ✅ Initialize Database and Server
+// ✅ Initialize DB + Server
 const initializeDbAndServer = async () => {
   try {
     db = await open({
@@ -20,7 +20,7 @@ const initializeDbAndServer = async () => {
       driver: sqlite3.Database,
     });
 
-    // ✅ Create Tables
+    // ✅ Create tables
     await db.exec(`
       CREATE TABLE IF NOT EXISTS users (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -52,19 +52,18 @@ const initializeDbAndServer = async () => {
       );
     `);
 
-    app.listen(5000, () =>
-      console.log("🚀 Server running at http://localhost:5000")
-    );
+    app.listen(5000, () => {
+      console.log("🚀 Server running at http://localhost:5000");
+    });
   } catch (error) {
-    console.error("❌ Database Error:", error);
+    console.error("❌ DB Error:", error);
     process.exit(1);
   }
 };
 
 initializeDbAndServer();
 
-
-// 🟢 Register User
+// 🟢 Register user
 app.post("/register", async (req, res) => {
   try {
     const { username, password } = req.body;
@@ -84,11 +83,9 @@ app.post("/register", async (req, res) => {
     ]);
     res.status(200).json({ message: "✅ Registered successfully" });
   } catch (e) {
-    console.error(e);
     res.status(500).json({ message: "Server error" });
   }
 });
-
 
 // 🔵 Login
 app.post("/login", async (req, res) => {
@@ -110,8 +107,7 @@ app.post("/login", async (req, res) => {
   }
 });
 
-
-// 🧩 Get All MLAs
+// 🧩 Get all MLAs
 app.get("/mlas", async (req, res) => {
   try {
     const mlas = await db.all("SELECT * FROM mlas");
@@ -121,8 +117,7 @@ app.get("/mlas", async (req, res) => {
   }
 });
 
-
-// 🧩 Get MLA Projects by ID
+// 🧩 Get MLA projects by ID
 app.get("/mlas/:id/projects", async (req, res) => {
   try {
     const { id } = req.params;
@@ -131,13 +126,11 @@ app.get("/mlas/:id/projects", async (req, res) => {
     ]);
     res.status(200).json(projects);
   } catch (e) {
-    console.error(e);
     res.status(500).json({ message: "Error fetching projects" });
   }
 });
 
-
-// 🧩 Seed MLAs (only once)
+// 🧩 Seed MLAs
 app.post("/seed-mlas", async (req, res) => {
   try {
     const { count } = await db.get("SELECT COUNT(*) AS count FROM mlas");
@@ -205,13 +198,11 @@ app.post("/seed-mlas", async (req, res) => {
 
     res.status(200).json({ message: "✅ MLA data seeded successfully" });
   } catch (e) {
-    console.error(e);
     res.status(500).json({ message: "Failed to insert MLA data" });
   }
 });
 
-
-// 🧩 Seed Projects (only once)
+// 🧩 Seed Projects
 app.post("/seed-projects", async (req, res) => {
   try {
     const { count } = await db.get("SELECT COUNT(*) AS count FROM projects");
@@ -241,7 +232,6 @@ app.post("/seed-projects", async (req, res) => {
 
     res.status(200).json({ message: "✅ Projects data seeded successfully" });
   } catch (e) {
-    console.error(e);
     res.status(500).json({ message: "Failed to insert project data" });
   }
 });

@@ -1,150 +1,125 @@
-body {
-  font-family: "Poppins", sans-serif;
-  background: linear-gradient(120deg, #e3f2fd, #fce4ec);
-  margin: 0;
-  padding: 0;
-}
+/* ===== MLA Dashboard Styles ===== */
 
-.mla-container {
-  padding: 40px 20px;
+.mla-dashboard {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8fafc, #eef2ff);
+  padding: 50px 20px;
   text-align: center;
-  margin: 22px;
-  gap:12px;
+  font-family: "Poppins", sans-serif;
+  animation: fadeIn 0.6s ease-in-out;
 }
 
-.mla-title {
+.mla-heading {
   font-size: 2.5rem;
-  color: #333;
+  color: #1e293b;
+  font-weight: 700;
   margin-bottom: 40px;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+  position: relative;
 }
 
+.mla-heading::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: #4f46e5;
+  margin: 10px auto 0;
+  border-radius: 10px;
+}
+
+/* ===== Grid Layout ===== */
 .mla-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 25px;
-  justify-items: center;
-  align-items: stretch;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding-bottom: 50px;
 }
 
+/* ===== MLA Card ===== */
 .mla-card {
-  background: white;
-  border-radius: 20px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  width: 100%;
-  max-width: 320px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  animation: fadeInUp 0.6s ease;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 25px 20px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  text-decoration: none;
+  color: #0f172a;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
 .mla-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 12px 25px rgba(79, 70, 229, 0.15);
 }
 
+/* Add subtle animated overlay on hover */
+.mla-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(79, 70, 229, 0.05), rgba(37, 99, 235, 0.08));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.mla-card:hover::before {
+  opacity: 1;
+}
+
+/* ===== MLA Image ===== */
 .mla-photo {
   width: 100%;
-  height: 230px;
+  height: 240px;
   object-fit: cover;
-  border-radius: 15px;
+  border-radius: 12px;
   margin-bottom: 15px;
+  transition: transform 0.4s ease;
 }
 
-.mla-card h2 {
-  color: #2c3e50;
-  font-size: 1.4rem;
-  margin: 10px 0;
+.mla-card:hover .mla-photo {
+  transform: scale(1.05);
+}
+
+/* ===== MLA Info ===== */
+.mla-card h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 10px 0 5px;
+  color: #111827;
 }
 
 .mla-card p {
-  color: #555;
   font-size: 0.95rem;
-  margin: 5px 0;
+  color: #475569;
+  margin: 3px 0;
 }
 
-.loading {
-  text-align: center;
-  font-size: 1.3rem;
-  color: #444;
-  margin-top: 100px;
-}
-
-/* ✨ Animation */
-@keyframes fadeInUp {
+/* ===== Animations ===== */
+@keyframes fadeIn {
   from {
-    transform: translateY(20px);
     opacity: 0;
+    transform: translateY(20px);
   }
   to {
-    transform: translateY(0);
     opacity: 1;
+    transform: translateY(0);
   }
 }
 
-/* 📱 Responsive */
-@media (max-width: 768px) {
-  .mla-title {
+/* ===== Responsive ===== */
+@media (max-width: 600px) {
+  .mla-heading {
     font-size: 2rem;
   }
 
   .mla-card {
-    max-width: 100%;
-  }
-}
-
-/* 🔍 Search and Filter Bar */
-.filter-bar {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 15px;
-  margin-bottom: 30px;
-}
-
-.search-input,
-.filter-select {
-  padding: 10px 15px;
-  border-radius: 25px;
-  border: none;
-  font-size: 1rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  transition: all 0.3s ease;
-}
-
-.search-input {
-  width: 250px;
-}
-
-.search-input:focus,
-.filter-select:focus {
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(37, 117, 252, 0.4);
-}
-
-.filter-select {
-  background: #fff;
-  color: #333;
-  cursor: pointer;
-}
-
-/* 🧩 No results text */
-.no-results {
-  text-align: center;
-  color: #fff;
-  font-size: 1.2rem;
-  margin-top: 40px;
-  animation: fadeIn 0.8s ease;
-}
-
-/* 🌈 Make the filter bar responsive */
-@media (max-width: 768px) {
-  .search-input {
-    width: 100%;
+    padding: 20px;
   }
 
-  .filter-bar {
-    flex-direction: column;
-    align-items: center;
+  .mla-photo {
+    height: 200px;
   }
 }
