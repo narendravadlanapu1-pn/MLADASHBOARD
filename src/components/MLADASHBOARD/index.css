@@ -1,0 +1,150 @@
+body {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(120deg, #e3f2fd, #fce4ec);
+  margin: 0;
+  padding: 0;
+}
+
+.mla-container {
+  padding: 40px 20px;
+  text-align: center;
+  margin: 22px;
+  gap:12px;
+}
+
+.mla-title {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 40px;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.mla-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 25px;
+  justify-items: center;
+  align-items: stretch;
+}
+
+.mla-card {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 100%;
+  max-width: 320px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeInUp 0.6s ease;
+}
+
+.mla-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.mla-photo {
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+  border-radius: 15px;
+  margin-bottom: 15px;
+}
+
+.mla-card h2 {
+  color: #2c3e50;
+  font-size: 1.4rem;
+  margin: 10px 0;
+}
+
+.mla-card p {
+  color: #555;
+  font-size: 0.95rem;
+  margin: 5px 0;
+}
+
+.loading {
+  text-align: center;
+  font-size: 1.3rem;
+  color: #444;
+  margin-top: 100px;
+}
+
+/* ✨ Animation */
+@keyframes fadeInUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* 📱 Responsive */
+@media (max-width: 768px) {
+  .mla-title {
+    font-size: 2rem;
+  }
+
+  .mla-card {
+    max-width: 100%;
+  }
+}
+
+/* 🔍 Search and Filter Bar */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.search-input,
+.filter-select {
+  padding: 10px 15px;
+  border-radius: 25px;
+  border: none;
+  font-size: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+.search-input {
+  width: 250px;
+}
+
+.search-input:focus,
+.filter-select:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(37, 117, 252, 0.4);
+}
+
+.filter-select {
+  background: #fff;
+  color: #333;
+  cursor: pointer;
+}
+
+/* 🧩 No results text */
+.no-results {
+  text-align: center;
+  color: #fff;
+  font-size: 1.2rem;
+  margin-top: 40px;
+  animation: fadeIn 0.8s ease;
+}
+
+/* 🌈 Make the filter bar responsive */
+@media (max-width: 768px) {
+  .search-input {
+    width: 100%;
+  }
+
+  .filter-bar {
+    flex-direction: column;
+    align-items: center;
+  }
+}

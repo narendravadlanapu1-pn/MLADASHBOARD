@@ -1,0 +1,146 @@
+/* Home Page Container */
+.home-container {
+  font-family: "Poppins", sans-serif;
+  color: #222;
+  background-color: #f9f9f9;
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* 🌟 Hero Section */
+.hero-section {
+  background: linear-gradient(90deg, #1e3c72, #2a5298);
+  color: white;
+  padding: 100px 20px;
+  text-align: center;
+  background-image: url("https://res.cloudinary.com/dftpcwyzm/image/upload/v1719650302/india-gate-delhi-1-attr-hero_au5x64.jpg");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.hero-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: auto;
+}
+
+.hero-title {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  line-height: 1.4;
+  animation: slideUp 1s ease-in-out;
+}
+
+.hero-subtitle {
+  font-size: 18px;
+  color: #e2e2e2;
+  margin-bottom: 30px;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+.explore-btn {
+  background: #ffd700;
+  color: #000;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+}
+
+.explore-btn:hover {
+  transform: scale(1.08);
+  background: white;
+  color: #1e3c72;
+}
+
+/* 📊 Stats Section */
+.stats-section {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.stats-title {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 40px;
+  color: #2a5298;
+}
+
+.stats-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 25px;
+}
+
+.stat-card {
+  background: white;
+  padding: 25px 40px;
+  border-radius: 15px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.4s ease, box-shadow 0.3s ease;
+  width: 220px;
+  animation: fadeUp 1s ease-in-out;
+}
+
+.stat-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.stat-card h3 {
+  font-size: 32px;
+  color: #1e3c72;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.stat-card p {
+  font-size: 16px;
+  color: #555;
+}
+
+/* 🎬 Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 📱 Responsive */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 26px;
+  }
+
+  .stat-card {
+    width: 80%;
+  }
+}
